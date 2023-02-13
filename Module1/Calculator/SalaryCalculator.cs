@@ -10,9 +10,18 @@ namespace Calculator
     {
         const int HoursInYear = 2080;
 
-        public decimal GetAnnualSalary(decimal hourlyWage) => hourlyWage * HoursInYear;       
-        public decimal GetHourlyWage(int annualSalary) => annualSalary / HoursInYear;
-        
+        public decimal GetAnnualSalary(decimal hourlyWage)
+        {
+            if (hourlyWage <= 0) throw new InvalidOperationException();
+            return hourlyWage * HoursInYear;
+        }
+
+        public decimal GetHourlyWage(int annualSalary)
+        {
+            if (annualSalary <= 0) throw new InvalidOperationException();
+            return annualSalary / HoursInYear;
+        }
+
         public TaxData TaxWithheld(double weeklySalary, int numDependants)
         {
             double ProvincialTaxWithheld = 0.6 * weeklySalary;
